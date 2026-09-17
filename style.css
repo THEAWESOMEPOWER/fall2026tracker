@@ -1,0 +1,1138 @@
+/* =========================================================
+   FALL 2026 ASSIGNMENT TRACKER
+   St. Clair College inspired theme
+   ========================================================= */
+
+:root {
+    --green-dark: #064d32;
+    --green: #087f4f;
+    --green-light: #0da866;
+
+    --yellow: #f5c400;
+    --yellow-light: #ffe36e;
+
+    --white: #ffffff;
+    --off-white: #f6f8f7;
+
+    --text-dark: #18352a;
+    --text-muted: #64756d;
+
+    --border: #dce7e1;
+
+    --success: #16834f;
+    --success-light: #e5f6ed;
+
+    --shadow: 0 10px 30px rgba(4, 55, 35, 0.10);
+    --shadow-hover: 0 16px 35px rgba(4, 55, 35, 0.16);
+
+    --radius: 16px;
+}
+
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    background: var(--green-dark);
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family:
+        "Avenir Next",
+        "Segoe UI",
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+
+    color: var(--text-dark);
+
+    background:
+        linear-gradient(
+            rgba(3, 55, 35, 0.78),
+            rgba(3, 55, 35, 0.88)
+        ),
+        url("STCLAIRPIC.png");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    line-height: 1.5;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   MAIN APP
+   ========================================================= */
+
+.app-shell {
+    width: min(1180px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 35px 0 50px;
+
+    /* Keeps the page itself from creating odd overflow */
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.hero {
+    position: relative;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(6, 77, 50, 0.97),
+            rgba(8, 127, 79, 0.94)
+        );
+
+    color: white;
+
+    border-radius: 22px;
+
+    padding: 38px 42px;
+
+    margin-bottom: 22px;
+
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.18);
+
+    overflow: hidden;
+}
+
+
+/* Yellow accent line */
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 6px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--yellow),
+            #ffd83d,
+            var(--yellow)
+        );
+}
+
+
+/* Decorative circle */
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 240px;
+    height: 240px;
+
+    right: -80px;
+    top: -90px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(245, 196, 0, 0.10);
+}
+
+
+.hero-top {
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 30px;
+}
+
+
+.eyebrow {
+    margin: 0 0 8px;
+
+    color: var(--yellow);
+
+    font-size: 0.82rem;
+
+    font-weight: 800;
+
+    letter-spacing: 2.5px;
+
+    text-transform: uppercase;
+}
+
+
+.hero h1 {
+    margin: 0;
+
+    font-size: clamp(2rem, 5vw, 3.25rem);
+
+    line-height: 1.05;
+
+    font-weight: 800;
+
+    letter-spacing: -1.5px;
+}
+
+
+.hero-description {
+    max-width: 650px;
+
+    margin: 15px 0 0;
+
+    color: rgba(255, 255, 255, 0.82);
+
+    font-size: 1rem;
+}
+
+
+.semester-badge {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    white-space: nowrap;
+
+    padding: 10px 15px;
+
+    background: rgba(255, 255, 255, 0.12);
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    border-radius: 999px;
+
+    font-size: 0.85rem;
+
+    font-weight: 700;
+}
+
+
+.status-dot {
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: var(--yellow);
+
+    box-shadow:
+        0 0 0 4px rgba(245, 196, 0, 0.15);
+}
+
+
+/* =========================================================
+   DASHBOARD
+   ========================================================= */
+
+.dashboard {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 16px;
+
+    margin-bottom: 18px;
+}
+
+
+.stat-card {
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    padding: 22px;
+
+    box-shadow: var(--shadow);
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.stat-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow: var(--shadow-hover);
+}
+
+
+/* Green top accent */
+
+.stat-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 4px;
+
+    background: var(--green);
+}
+
+
+.stat-label {
+    display: block;
+
+    color: var(--text-muted);
+
+    font-size: 0.76rem;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1.2px;
+
+    margin-bottom: 6px;
+}
+
+
+.stat-card strong {
+    display: block;
+
+    color: var(--green-dark);
+
+    font-size: 2rem;
+
+    line-height: 1.1;
+
+    font-weight: 800;
+}
+
+
+.stat-subtext {
+    display: block;
+
+    margin-top: 5px;
+
+    color: var(--text-muted);
+
+    font-size: 0.82rem;
+}
+
+
+/* =========================================================
+   PROGRESS
+   ========================================================= */
+
+.progress-card {
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    padding: 25px;
+
+    margin-bottom: 18px;
+
+    box-shadow: var(--shadow);
+}
+
+
+.progress-heading {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    margin-bottom: 18px;
+}
+
+
+.section-label {
+    display: block;
+
+    color: var(--green);
+
+    font-size: 0.73rem;
+
+    font-weight: 800;
+
+    letter-spacing: 1.4px;
+
+    text-transform: uppercase;
+}
+
+
+.progress-heading h2 {
+    margin: 3px 0 0;
+
+    font-size: 1.2rem;
+
+    color: var(--green-dark);
+}
+
+
+.progress-number {
+    color: var(--green);
+
+    font-size: 1.6rem;
+
+    font-weight: 800;
+}
+
+
+.progress-track {
+    width: 100%;
+
+    height: 13px;
+
+    background: #e8efeb;
+
+    border-radius: 999px;
+
+    overflow: hidden;
+}
+
+
+.progress-fill {
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--green-dark),
+            var(--green-light)
+        );
+
+    border-radius: inherit;
+
+    transition:
+        width 0.45s ease;
+}
+
+
+.progress-message {
+    margin: 12px 0 0;
+
+    color: var(--text-muted);
+
+    font-size: 0.86rem;
+}
+
+
+/* =========================================================
+   CONTROLS
+   ========================================================= */
+
+.controls {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 18px;
+}
+
+
+.filter-buttons {
+    display: flex;
+
+    gap: 7px;
+
+    padding: 5px;
+
+    background: rgba(255, 255, 255, 0.92);
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    box-shadow: var(--shadow);
+}
+
+
+.filter-button {
+    border: 0;
+
+    background: transparent;
+
+    color: var(--text-muted);
+
+    padding: 9px 15px;
+
+    border-radius: 8px;
+
+    font-family: inherit;
+
+    font-size: 0.84rem;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.filter-button:hover {
+    color: var(--green);
+}
+
+
+.filter-button.active {
+    background: var(--green);
+
+    color: white;
+
+    box-shadow:
+        0 3px 8px rgba(8, 127, 79, 0.2);
+}
+
+
+.reset-button {
+    border: 1px solid #d9cfcf;
+
+    background: rgba(255, 255, 255, 0.94);
+
+    color: #8b4545;
+
+    padding: 10px 16px;
+
+    border-radius: 10px;
+
+    font-family: inherit;
+
+    font-size: 0.82rem;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.reset-button:hover {
+    background: #fff5f5;
+
+    border-color: #c99999;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   UPCOMING
+   ========================================================= */
+
+.upcoming-card {
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fffdf2,
+            #fff9d9
+        );
+
+    border: 1px solid #eedc7b;
+
+    border-left: 5px solid var(--yellow);
+
+    border-radius: var(--radius);
+
+    padding: 21px 24px;
+
+    margin-bottom: 22px;
+
+    box-shadow: var(--shadow);
+}
+
+
+.upcoming-icon {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 12px;
+
+    background: var(--yellow);
+
+    color: var(--green-dark);
+
+    font-weight: 900;
+
+    font-size: 1.2rem;
+}
+
+
+.upcoming-card h2 {
+    margin: 3px 0 3px;
+
+    color: var(--green-dark);
+
+    font-size: 1.05rem;
+}
+
+
+.upcoming-card p {
+    margin: 0;
+
+    color: #6d6541;
+
+    font-size: 0.87rem;
+}
+
+
+/* =========================================================
+   COURSE SECTIONS
+   ========================================================= */
+
+.course-section {
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    overflow: hidden;
+
+    margin-bottom: 20px;
+
+    box-shadow: var(--shadow);
+}
+
+
+.course-header {
+    padding: 23px 25px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #f3f8f5,
+            #ffffff
+        );
+
+    border-bottom: 1px solid var(--border);
+}
+
+
+.course-header > div {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+
+.course-number {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 11px;
+
+    background: var(--green);
+
+    color: white;
+
+    font-size: 0.82rem;
+
+    font-weight: 800;
+}
+
+
+.course-header h2 {
+    margin: 0;
+
+    color: var(--green-dark);
+
+    font-size: 1.12rem;
+
+    line-height: 1.3;
+}
+
+
+.course-header p {
+    margin: 3px 0 0;
+
+    color: var(--text-muted);
+
+    font-size: 0.82rem;
+}
+
+
+.course-header small {
+    color: var(--text-muted);
+
+    font-size: 0.72em;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   ASSIGNMENTS
+   ========================================================= */
+
+.assignment-list {
+    list-style: none;
+
+    margin: 0;
+    padding: 0;
+}
+
+
+.assignment {
+    display: grid;
+
+    grid-template-columns: 34px minmax(0, 1fr) auto;
+
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 15px 22px;
+
+    border-bottom: 1px solid #edf1ef;
+
+    cursor: pointer;
+
+    transition:
+        background 0.18s ease,
+        padding-left 0.18s ease;
+}
+
+
+.assignment:last-child {
+    border-bottom: 0;
+}
+
+
+.assignment:hover {
+    background: #f6faf8;
+
+    padding-left: 26px;
+}
+
+
+.assignment.hidden {
+    display: none;
+}
+
+
+/* =========================================================
+   CHECKBOX
+   ========================================================= */
+
+.checkbox {
+    width: 24px;
+    height: 24px;
+
+    padding: 0;
+
+    border: 2px solid #aebdb5;
+
+    border-radius: 7px;
+
+    background: white;
+
+    cursor: pointer;
+
+    position: relative;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.15s ease;
+}
+
+
+.checkbox:hover {
+    border-color: var(--green);
+
+    transform: scale(1.05);
+}
+
+
+.checkbox::after {
+    content: "";
+
+    position: absolute;
+
+    width: 6px;
+    height: 11px;
+
+    left: 7px;
+    top: 3px;
+
+    border:
+        solid white;
+
+    border-width:
+        0 2px 2px 0;
+
+    transform:
+        rotate(45deg)
+        scale(0);
+
+    transition:
+        transform 0.15s ease;
+}
+
+
+.assignment.completed .checkbox {
+    background: var(--green);
+
+    border-color: var(--green);
+
+    box-shadow:
+        0 0 0 4px rgba(8, 127, 79, 0.10);
+}
+
+
+.assignment.completed .checkbox::after {
+    transform:
+        rotate(45deg)
+        scale(1);
+}
+
+
+/* =========================================================
+   ASSIGNMENT TEXT
+   ========================================================= */
+
+.assignment-info {
+    min-width: 0;
+}
+
+
+.assignment-name {
+    color: var(--text-dark);
+
+    font-size: 0.91rem;
+
+    font-weight: 600;
+
+    transition:
+        color 0.2s ease,
+        opacity 0.2s ease;
+}
+
+
+.assignment.completed {
+    background: var(--success-light);
+}
+
+
+.assignment.completed .assignment-name {
+    color: var(--green);
+
+    text-decoration: line-through;
+
+    opacity: 0.68;
+}
+
+
+/* =========================================================
+   DATE BADGE
+   ========================================================= */
+
+.date-badge {
+    white-space: nowrap;
+
+    padding: 6px 10px;
+
+    border-radius: 8px;
+
+    background: #f1f5f3;
+
+    border: 1px solid #dce6e1;
+
+    color: var(--green-dark);
+
+    font-size: 0.75rem;
+
+    font-weight: 800;
+}
+
+
+.assignment.completed .date-badge {
+    background: #d7eee2;
+
+    border-color: #b8dcc8;
+
+    color: var(--green);
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-top: 25px;
+
+    padding: 0 5px;
+
+    color: rgba(255, 255, 255, 0.72);
+
+    font-size: 0.76rem;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+    .app-shell {
+        width: min(100% - 20px, 700px);
+
+        padding-top: 20px;
+    }
+
+
+    .hero {
+        padding: 30px 25px;
+    }
+
+
+    .hero-top {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .semester-badge {
+        align-self: flex-start;
+    }
+
+
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+
+
+    .controls {
+        align-items: stretch;
+
+        flex-direction: column;
+    }
+
+
+    .filter-buttons {
+        width: 100%;
+    }
+
+
+    .filter-button {
+        flex: 1;
+    }
+
+
+    .reset-button {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .assignment {
+        grid-template-columns:
+            30px minmax(0, 1fr);
+
+        gap: 11px;
+
+        padding: 14px 15px;
+    }
+
+
+    .assignment:hover {
+        padding-left: 18px;
+    }
+
+
+    .date-badge {
+        grid-column: 2;
+
+        justify-self: start;
+
+        margin-top: -5px;
+    }
+
+
+    .course-header {
+        padding: 20px 17px;
+    }
+
+
+    .course-header h2 {
+        font-size: 1rem;
+    }
+
+
+    .progress-card {
+        padding: 20px;
+    }
+
+
+    footer {
+        flex-direction: column;
+
+        text-align: center;
+    }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+button:focus-visible,
+.assignment:focus-visible {
+    outline: 3px solid var(--yellow);
+
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+
+        transition-duration:
+            0.01ms !important;
+
+        animation-duration:
+            0.01ms !important;
+    }
+}
+
+/* =========================================================
+   FLOATING ST. CLAIR LOGO
+   Bottom-right corner of the screen
+   ========================================================= */
+
+.stclair-floating-logo {
+    position: fixed;
+
+    right: 22px;
+    bottom: 20px;
+
+    width: 115px;
+    height: auto;
+
+    object-fit: contain;
+
+    z-index: 9999;
+
+    /* Makes it feel like part of the interface */
+    filter:
+        drop-shadow(0 4px 10px rgba(0, 0, 0, 0.25));
+
+    opacity: 0.92;
+
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+
+.stclair-floating-logo:hover {
+    transform: translateY(-3px) scale(1.03);
+
+    opacity: 1;
+}
+
+
+/* Smaller logo on phones */
+
+@media (max-width: 600px) {
+
+    .stclair-floating-logo {
+        right: 12px;
+        bottom: 12px;
+
+        width: 82px;
+
+        opacity: 0.88;
+    }
+}

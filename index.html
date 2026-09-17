@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Fall 2026 • Assignment Tracker</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="app-shell">
+
+<!-- Header -->
+<header class="hero">
+  <div class="hero-top">
+    <div>
+      <p class="eyebrow">LATRISHA'S FALL 2026</p>
+      <h1>Assignment Tracker</h1>
+      <p class="hero-description">
+         Keeping track of my assignments, tests, projects, and any upcoming deadlines.
+      </p>
+    </div>
+
+    <div class="semester-badge">
+      <span class="status-dot"></span>
+      Semester Active
+    </div>
+  </div>
+</header>
+
+
+<!-- Dashboard -->
+<section class="dashboard">
+
+  <div class="stat-card">
+    <span class="stat-label">Completed</span>
+    <strong id="completed-count">0</strong>
+    <span class="stat-subtext">assignments</span>
+  </div>
+
+  <div class="stat-card">
+    <span class="stat-label">Remaining</span>
+    <strong id="remaining-count">0</strong>
+    <span class="stat-subtext">to finish</span>
+  </div>
+
+  <div class="stat-card">
+    <span class="stat-label">Next Due</span>
+    <strong id="next-due">—</strong>
+    <span class="stat-subtext" id="next-due-name">Nothing upcoming</span>
+  </div>
+
+</section>
+
+
+<!-- Progress -->
+<section class="progress-card">
+
+  <div class="progress-heading">
+    <div>
+      <span class="section-label">Overall Progress</span>
+      <h2>Semester completion</h2>
+    </div>
+
+    <span class="progress-number" id="progress-percentage">0%</span>
+  </div>
+
+  <div class="progress-track">
+    <div
+      class="progress-fill"
+      id="progress-fill"
+      style="width: 0%"
+    ></div>
+  </div>
+
+  <p class="progress-message" id="progress-message">
+    Let's get started.
+  </p>
+
+</section>
+
+
+<!-- Controls -->
+<section class="controls">
+
+  <div class="filter-buttons">
+    <button class="filter-button active" data-filter="all">
+      All
+    </button>
+
+    <button class="filter-button" data-filter="remaining">
+      Remaining
+    </button>
+
+    <button class="filter-button" data-filter="completed">
+      Completed
+    </button>
+  </div>
+
+  <button class="reset-button" id="reset-button">
+    Reset Progress
+  </button>
+
+</section>
+
+
+<!-- Upcoming -->
+<section class="upcoming-card" id="upcoming-card">
+
+  <div class="upcoming-icon">!</div>
+
+  <div>
+    <span class="section-label">Coming Up</span>
+    <h2 id="upcoming-title">Loading...</h2>
+    <p id="upcoming-description">
+      Checking your upcoming deadlines.
+    </p>
+  </div>
+
+</section>
+
+
+<!-- Courses -->
+<main id="assignment-container">
+
+  <!-- Legal Communication -->
+  <section class="course-section">
+
+    <div class="course-header">
+      <div>
+        <span class="course-number">01</span>
+        <div>
+          <h2>Legal Communication &amp; Paralegal Practice <small>(PLG105)</small></h2>
+          <p>Communication, organization, and professional practice</p>
+        </div>
+      </div>
+    </div>
+
+    <ul class="assignment-list">
+
+      <li class="assignment" data-id="legal-communication-1" data-date="2026-09-17">
+        <button class="checkbox" aria-label="Mark assignment complete"></button>
+        <div class="assignment-info">
+          <span class="assignment-name">Time Management System — 10%</span>
+        </div>
+        <time class="date-badge" datetime="2026-09-17">Sept. 17</time>
+      </li>
+
+      <li class="assignment" data-id="legal-communication-3" data-date="2026-09-24">
+        <button class="checkbox" aria-label="Mark assignment complete"></button>
+        <div class="assignment-info">
+          <span class="assignment-name">Career Awareness Interview Report — 10%</span>
+        </div>
+        <time class="date-badge" datetime="2026-09-24">Sept. 24</time>
+      </li>
+
+      <li class="assignment" data-id="legal-communication-4" data-date="2026-10-01">
+        <button class="checkbox" aria-label="Mark assignment complete"></button>
+        <div class="assignment-info">
+          <span class="assignment-name">Career Awareness Interview Presentations — 10%</span>
+        </div>
+        <time class="date-badge" datetime="2026-10-01">Oct. 1</time>
+      </li>
+
+      <li class="assignment" data-id="legal-communication-5" data-date="2026-10-01">
+        <button class="checkbox" aria-label="Mark assignment complete"></button>
+        <div class="assignment-info">
+          <span class="assignment-name">Mock File Assignment #1 — Physical File Organization</span>
+        </div>
+        <time class="date-badge" datetime="2026-10-01">Oct. 1</time>
+      </li>
+
+      <li class="assignment" data-id="legal-communication-6" data-date="2026-10-15">
+        <button class="checkbox" aria-label="Mark assignment complete"></button>
+        <div class="assignment-info">
+          <span class="assignment-name">Mock File Assignments #2–5</span>
+        </div>
+        <time class="date-badge" datetime="2026-10-15">Oct. 15</time>
+      </li>
+
+      <li class="assignment" data-id="legal-communication-7" data-date="2026-10-22">
+        <button class="checkbox" aria-label="Mark assignment complete"></button>
+        <div class="assignment-info">
+          <span class="assignment-name">Mock File Assignments #6–8</span>
+        </div>
+        <time class="date-badge" datetime="2026-10-22">Oct. 22</time>
+      </li>
+
+      <li class="assignment" data-id="legal-communication-8" data-date="2026-10-29">
+        <button class="checkbox" aria-label="Mark assignment complete"></button>
+        <div class="assignment-info">
+          <span class="assignment-name">Mock File Assignments #9–12</span>
+        </div>
+        <time class="date-badge" datetime="2026-10-29">Oct. 29</time>
+      </li>
+
+      <li class="assignment" data-id="legal-communication-9" data-date="2026-11-05">
+        <button class="checkbox" aria-label="Mark assignment complete"></button>
+        <div class="assignment-info">
+          <span class="assignment-name">Mock File Assignments #13–16</span>
+        </div>
+        <time class="date-badge" datetime="2026-11-05">Nov. 5</time>
+      </li>
+
+      <li class="assignment" data-id="legal-communication-10" data-date="2026-11-12">
+        <button class="checkbox" aria-label="Mark assignment complete"></button>
+        <div class="assignment-info">
+          <span class="assignment-name">Mock File Assignments #17–20</span>
+        </div>
+        <time class="date-badge" datetime="2026-11-12">Nov. 12</time>
+      </li>
+
+      <li class="assignment" data-id="legal-communication-11" data-date="2026-11-19">
+        <button class="checkbox" aria-label="Mark assignment complete"></button>
+        <div class="assignment-info">
+          <span class="assignment-name">Mock File Assignments #21–22</span>
+        </div>
+        <time class="date-badge" datetime="2026-11-19">Nov. 19</time>
+      </li>
+
+      <li class="assignment" data-id="legal-communication-12" data-date="2026-11-26">
+        <button class="checkbox" aria-label="Mark assignment complete"></button>
+        <div class="assignment-info">
+          <span class="assignment-name">Mock File Assignments #23–24</span>
+        </div>
+        <time class="date-badge" datetime="2026-11-26">Nov. 26</time>
+      </li>
+
+      <li class="assignment" data-id="legal-communication-13" data-date="2026-12-03">
+        <button class="checkbox" aria-label="Mark assignment complete"></button>
+        <div class="assignment-info">
+          <span class="assignment-name">Mock File Assignments #25–27</span>
+        </div>
+        <time class="date-badge" datetime="2026-12-03">Dec. 3</time>
+      </li>
+
+      <li class="assignment" data-id="legal-communication-14" data-date="2026-12-03">
+        <button class="checkbox" aria-label="Mark assignment complete"></button>
+        <div class="assignment-info">
+          <span class="assignment-name">Journal Reflection — 10%, 11:59 PM Blackboard</span>
+        </div>
+        <time class="date-badge" datetime="2026-12-03">Dec. 3</time>
+      </li>
+
+      <li class="assignment" data-id="legal-communication-15" data-date="2026-12-10">
+        <button class="checkbox" aria-label="Mark assignment complete"></button>
+        <div class="assignment-info">
+          <span class="assignment-name">Mock File Assignments #28–29</span>
+        </div>
+        <time class="date-badge" datetime="2026-12-10">Dec. 10</time>
+      </li>
+
+      <li class="assignment" data-id="legal-communication-16" data-date="2026-12-10">
+        <button class="checkbox" aria-label="Mark assignment complete"></button>
+        <div class="assignment-info">
+          <span class="assignment-name">Precedents Binder — 10%</span>
+        </div>
+        <time class="date-badge" datetime="2026-12-10">Dec. 10</time>
+      </li>
+
+      <li class="assignment" data-id="legal-communication-17" data-date="2026-12-17">
+        <button class="checkbox" aria-label="Mark assignment complete"></button>
+        <div class="assignment-info">
+          <span class="assignment-name">Mock File Assignments #30–34</span>
+        </div>
+        <time class="date-badge" datetime="2026-12-17">Dec. 17</time>
+      </li>
+
+      <li class="assignment" data-id="legal-communication-18" data-date="2026-12-17">
+        <button class="checkbox" aria-label="Mark assignment complete"></button>
+        <div class="assignment-info">
+          <span class="assignment-name">In-Class Test — 10%</span>
+        </div>
+        <time class="date-badge" datetime="2026-12-17">Dec. 17</time>
+      </li>
+
+      <li class="assignment" data-id="legal-communication-19" data-date="2026-12-17">
+        <button class="checkbox" aria-label="Mark assignment complete"></button>
+        <div class="assignment-info">
+          <span class="assignment-name">Professionalism Evaluation &amp; Reflection — 5%, 11:59 PM Blackboard</span>
+        </div>
+        <time class="date-badge" datetime="2026-12-17">Dec. 17</time>
+      </li>
+
+    </ul>
+  </section>
+
+
+  <!-- Legal Research -->
+  <section class="course-section">
+
+    <div class="course-header">
+      <div>
+        <span class="course-number">02</span>
+        <div>
+          <h2>Legal Research &amp; Writing <small>(PLG155)</small></h2>
+          <p>Research, case analysis, writing, and examinations</p>
+        </div>
+      </div>
+    </div>
+
+    <ul class="assignment-list">
+
+      <li class="assignment" data-id="research-1" data-date="2026-09-30">
+        <button class="checkbox" aria-label="Mark assignment complete"></button>
+        <div class="assignment-info">
+          <span class="assignment-name">Statutes and Regulations: A Breakdown Assignment — 15%, 11:59 PM Blackboard</span>
+        </div>
+        <time class="date-badge" datetime="2026-09-30">Sept. 30</time>
+      </li>
+
+      <li class="assignment" data-id="research-2" data-date="2026-10-14">
+        <button class="checkbox" aria-label="Mark assignment complete"></button>
+        <div class="assignment-info">
+          <span class="assignment-name">Case Briefs Assignment — 20%, 11:59 PM Blackboard</span>
+        </div>
+        <time class="date-badge" datetime="2026-10-14">Oct. 14</time>
+      </li>
+
+      <li class="assignment" data-id="research-3" data-date="2026-10-21">
+        <button class="checkbox" aria-label="Mark assignment complete"></button>
+        <div class="assignment-info">
+          <span class="assignment-name">Midterm Test — 15%</span>
+        </div>
+        <time class="date-badge" datetime="2026-10-21">Oct. 21</time>
+      </li>
+
+      <li class="assignment" data-id="research-4" data-date="2026-11-25">
+        <button class="checkbox" aria-label="Mark assignment complete"></button>
+        <div class="assignment-info">
+          <span class="assignment-name">Memorandum of Law Assignment — 25%, 11:59 PM Blackboard</span>
+        </div>
+        <time class="date-badge" datetime="2026-11-25">Nov. 25</time>
+      </li>
+
+      <li class="assignment" data-id="research-5" data-date="2026-12-02">
+        <button class="checkbox" aria-label="Mark assignment complete"></button>
+        <div class="assignment-info">
+          <span class="assignment-name">Opinion Letter — 10%, 11:59 PM Blackboard</span>
+        </div>
+        <time class="date-badge" datetime="2026-12-02">Dec. 2</time>
+      </li>
+
+      <li class="assignment" data-id="research-6" data-date="2026-12-16">
+        <button class="checkbox" aria-label="Mark assignment complete"></button>
+        <div class="assignment-info">
+          <span class="assignment-name">Final Test — 15%</span>
+        </div>
+        <time class="date-badge" datetime="2026-12-16">Dec. 16</time>
+      </li>
+
+    </ul>
+  </section>
+
+
+  <!-- Landlord & Tenant -->
+  <section class="course-section">
+
+    <div class="course-header">
+      <div>
+        <span class="course-number">03</span>
+        <div>
+          <h2>Landlord &amp; Tenant <small>(PLG170)</small></h2>
+          <p>Exams, tribunal projects, and trial preparation</p>
+        </div>
+      </div>
+    </div>
+
+    <ul class="assignment-list">
+
+      <li class="assignment" data-id="landlord-1" data-date="2026-10-15">
+        <button class="checkbox" aria-label="Mark assignment complete"></button>
+        <div class="assignment-info">
+          <span class="assignment-name">Mid-Term Exam — 25%</span>
+        </div>
+        <time class="date-badge" datetime="2026-10-15">Oct. 15</time>
+      </li>
+
+      <li class="assignment" data-id="landlord-2" data-date="2026-11-12">
+        <button class="checkbox" aria-label="Mark assignment complete"></button>
+        <div class="assignment-info">
+          <span class="assignment-name">Tribunal Hearing Project — 30%</span>
+        </div>
+        <time class="date-badge" datetime="2026-11-12">Nov. 12</time>
+      </li>
+
+      <li class="assignment" data-id="landlord-3" data-date="2026-12-03">
+        <button class="checkbox" aria-label="Mark assignment complete"></button>
+        <div class="assignment-info">
+          <span class="assignment-name">Mock Tribunal Trial Preparation</span>
+        </div>
+        <time class="date-badge" datetime="2026-12-03">Dec. 3</time>
+      </li>
+
+      <li class="assignment" data-id="landlord-4" data-date="2026-12-10">
+        <button class="checkbox" aria-label="Mark assignment complete"></button>
+        <div class="assignment-info">
+          <span class="assignment-name">Mock Tribunal Trial — 20%</span>
+        </div>
+        <time class="date-badge" datetime="2026-12-10">Dec. 10</time>
+      </li>
+
+      <li class="assignment" data-id="landlord-5" data-date="2026-12-17">
+        <button class="checkbox" aria-label="Mark assignment complete"></button>
+        <div class="assignment-info">
+          <span class="assignment-name">Final Exam — 25%</span>
+        </div>
+        <time class="date-badge" datetime="2026-12-17">Dec. 17</time>
+      </li>
+
+    </ul>
+  </section>
+
+</main>
+
+
+<footer>
+    <span>LaTrisha's Fall 2026 Assignment Tracker</span>
+    <span>Progress saves automatically in your browser.</span>
+</footer>
+
+</div>
+
+<img
+    src="STCLAIRLOGO.png"
+    alt="St. Clair College"
+    class="stclair-floating-logo"
+>
+
+<script src="assignments.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
